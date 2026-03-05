@@ -1,3 +1,6 @@
+from database.users import cuentas
+
+
 def consultar_saldo(usuario):
     saldo = cuentas.get(usuario, 0)
     print(f"\n--- CONSULTA ---")
@@ -27,4 +30,3 @@ def retirar_dinero(usuario):
             print("Error: El monto debe ser mayor a 0.")
     except ValueError:
         print("Error: Entrada inválida. Por favor, ingresa solo números.")
-        
