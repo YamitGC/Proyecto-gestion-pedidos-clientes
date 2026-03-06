@@ -16,12 +16,13 @@ def consultar_historial(usuario):
     if not movimientos:
         print("No hay movimientos registrados aún.")
     else:
+        # i es la variable que guarda el indice (numero de movimientos 1,2,3)
+        # m es la variable que guarda el movimiento
         for i, m in enumerate(movimientos, 1):
             print(f"{i}. {m}")
 
 def consultar_saldo(usuario):
     # Accedemos a la base de datos para obtener el saldo actual
-    # Usamos .get() por seguridad, aunque ya sabemos que el usuario existe por el auth
     saldo = cuentas[usuario]["saldo"]
     
     print("\n" + "="*30)
@@ -44,8 +45,9 @@ def depositar_dinero(usuario):
         elif monto > 10000:
             print("Error: Por seguridad, no puedes depositar más de $10,000 por transacción.")
         
+        # Si pasa las pruebas, procedemos
         else:
-            # Si pasa las pruebas, procedemos
+            # += Suma el monto ingresado al valor actual del saldo y guarda el nuevo total en el diccionario del usuario.
             cuentas[usuario]["saldo"] += monto
             registrar_movimiento(usuario, "DEPÓSITO", monto)
             

@@ -4,7 +4,6 @@ from app.logica_atm import *
 from app.colores import *
 
 
-
 historial = []
 
 def agregar_historial(operacion):
@@ -42,7 +41,7 @@ def menu(usuario):
             clean_screen()
             progress_bar()
             consultar_saldo(usuario)
-            input("\nPresiona ENTER para volver al menú...") # Pausa necesaria
+            input("\nPresiona ENTER para volver al menú...") 
         
         elif opcion == 2:
             clean_screen()
@@ -59,12 +58,12 @@ def menu(usuario):
         elif opcion == 4:
             clean_screen()
             progress_bar()
-            consultar_historial(usuario) # Llamada a la nueva función
+            consultar_historial(usuario)
             input("\nPresiona ENTER para volver al menú...")
 
         elif opcion == 5:
             print("Cerrando el cajero... ¡Vuelva pronto!")
-            break # <--- Única forma de salir del bucle y cerrar el programa
+            break
 
         else:
             print("Opcion incorrecta, digite una opcion valida (1-5).")

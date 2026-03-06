@@ -1,4 +1,5 @@
 import os
 
 def clean_screen():
-     os.system('clear')
+     # Si el sistema es Windows ('nt'), usa 'cls', si no, usa 'clear'
+     os.system('cls' if os.name == 'nt' else 'clear')

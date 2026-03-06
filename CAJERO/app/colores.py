@@ -1,5 +1,3 @@
-
-
 ROJO = "\033[31m"
 VERDE = "\033[32m"
 AMARILLO = "\033[33m"

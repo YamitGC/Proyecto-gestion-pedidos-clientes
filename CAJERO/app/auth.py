@@ -1,4 +1,3 @@
-from database.users import cuentas
 from app.colores import *
 
 def auth(cuentas):

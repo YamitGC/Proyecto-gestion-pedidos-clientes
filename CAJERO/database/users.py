@@ -2,7 +2,7 @@ cuentas = {
 
     "Luis": {
         "pin": "0000",
-        "saldo": 1500.0,
+        "saldo": 1000.0,
         "historial": []
     },
     "Lucy": {
@@ -12,7 +12,7 @@ cuentas = {
     },
     "Gustavo": {
         "pin": "2222",
-        "saldo": 500.0,
+        "saldo": 1200.0,
         "historial": []
     },
     "Kika": {
@@ -32,7 +32,7 @@ cuentas = {
     },
     "Harry": {
         "pin": "6666",
-        "saldo": 750.0,
+        "saldo": 1750.0,
         "historial": []
     },
     "Jhon": {
