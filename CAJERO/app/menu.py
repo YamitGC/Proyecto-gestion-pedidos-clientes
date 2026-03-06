@@ -1,6 +1,7 @@
 from app.clean_screen import clean_screen
 from app.progress_bar import progress_bar
 from app.logica_atm import *
+from app.colores import *
 
 
 
@@ -22,9 +23,9 @@ def menu(usuario):
         # Limpiamos la pantalla antes de mostrar el menú principal
         # clean_screen() 
         
-        print("\n" + "="*30)
-        print(f"   BIENVENIDO, {usuario.upper()}")
-        print("="*30)
+        print("\n" + VERDE + "="*30 + RESET)
+        print(f"  BIENVENIDO/A, {usuario.upper()}")
+        print(VERDE + "="*30 + RESET)
         print("1. Consultar saldo")
         print("2. Depositar dinero")
         print("3. Retirar dinero")

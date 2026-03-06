@@ -7,7 +7,7 @@ from app.menu import menu
 from app.auth import auth
 
 def iniciar_programa():
-    print("=== BIENVENIDO AL CAJERO AUTOMÁTICO V2 ===")
+    print("=== BIENVENIDO AL CAJERO AUTOMÁTICO PYTHON ===")
     
     # 1. Ejemplo de Login usando la data importada
     usuario_autenticado = auth(cuentas) 

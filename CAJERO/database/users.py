@@ -10,12 +10,12 @@ cuentas = {
         "saldo": 3000.0,
         "historial": []
     },
-    "gustavo": {
+    "Gustavo": {
         "pin": "2222",
         "saldo": 500.0,
         "historial": []
     },
-    "kika": {
+    "Kika": {
         "pin": "3333",
         "saldo": 2000.0,
         "historial": []

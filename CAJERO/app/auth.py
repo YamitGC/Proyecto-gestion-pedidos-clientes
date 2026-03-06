@@ -1,20 +1,14 @@
 from database.users import cuentas
-
-ROJO = "\033[31m"
-VERDE = "\033[32m"
-AMARILLO = "\033[33m"
-CYAN = "\033[36m"
-NEGRITA = "\033[1m"
-RESET = "\033[0m"
+from app.colores import *
 
 def auth(cuentas):
-    print(CYAN + NEGRITA + "\n=== SISTEMA DE SEGURIDAD V2 ===" + RESET)
+    print(VERDE + NEGRITA + "\n=== SISTEMA DE SEGURIDAD ===" + RESET)
 
     intentos_usuario = 3
 
     # --- BUCLE PARA EL NOMBRE DE USUARIO ---
     for i_u in range(intentos_usuario):
-        usuario_input = input(AMARILLO + "\nIngrese su nombre de usuario: " + RESET)
+        usuario_input = input(VERDE + "\nIngrese su nombre de usuario: " + RESET)
         
         # .capitalize() ayuda a que "luis" sea igual a "Luis" en tu BD
         usuario = usuario_input.capitalize()
