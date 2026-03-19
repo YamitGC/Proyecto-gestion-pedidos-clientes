@@ -1,6 +1,0 @@
-ROJO = "\033[31m"
-VERDE = "\033[32m"
-AMARILLO = "\033[33m"
-CYAN = "\033[36m"
-NEGRITA = "\033[1m"
-RESET = "\033[0m"
