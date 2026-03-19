@@ -1,228 +1,186 @@
-# Order and Customer Management System
+# Customer Order Management System
 
-## Description
-
-This project is a Python application that manages customers and orders using a separate structure in three main files:
-
-- `main.py`
-- `view.py`
-- `controller.py`
-
-Each file has a specific responsibility within the system.
+A console-based Python application for managing customers, products, and orders. Built following the **MVC (Model-View-Controller)** architectural pattern with in-memory storage.
 
 ---
 
-# ▶️ `main.py` — Program control
+## Features
 
-## 🔹 What's inside?
+- Register and manage customers
+- Register and manage products
+- Create orders with automatic ID generation and total calculation
+- Query all orders or search by ID
+- Calculate total daily income
+- Generate a full daily report grouped by customer
 
-In this file we mainly find:
+---
 
-### 1. Main loop (`while`)
+## Project Structure
 
+```
+Proyecto-gestion-pedidos-clientes/
+│
+├── main.py                         # Entry point — main loop and flow control
+│
+├── models/
+│   ├── customer_model.py           # Customer data operations
+│   ├── order_model.py              # Order data operations
+│   └── product_model.py            # Product data operations
+│
+├── controller/
+│   ├── customer_controller.py      # Customer business logic & validation
+│   ├── order_controller.py         # Order business logic & validation
+│   ├── product_controller.py       # Product business logic & validation
+│   └── report_controller.py        # Income calculation & report generation
+│
+└── view/
+    └── menu_view.py                # All console input/output functions
+```
+
+---
+
+## Architecture
+
+This project implements the MVC pattern across three layers:
+
+```
+User → View (input)
+     → Main (routing)
+     → Controller (validation & logic)
+     → Model (data storage)
+     → Controller
+     → Main
+     → View (output)
+     → User
+```
+
+| Layer | Responsibility |
+|---|---|
+| **Model** | Stores and retrieves data using in-memory dictionaries |
+| **View** | Handles all `input()` and `print()` interactions with the user |
+| **Controller** | Validates data, applies business rules, and coordinates between model and view |
+| **Main** | Runs the menu loop and routes each option to the correct controller/view calls |
+
+> **Note:** There is no database or file persistence. All data lives in memory for the duration of the session.
+
+---
+
+## Getting Started
+
+### Requirements
+
+- Python 3.10 or higher
+- No external dependencies required
+
+### Run the application
+
+```bash
+python main.py
+```
+
+---
+
+## Menu Options
+
+```
+====== MENU ======
+1. Register customer
+2. Register product
+3. Create order
+4. Show orders
+5. Show daily income
+6. Generate report
+0. Exit
+```
+
+### Option 1 — Register Customer
+Prompts for a customer ID, full name, and email. Validates that all fields are provided and that the ID is not already taken.
+
+### Option 2 — Register Product
+Prompts for a product ID, name, and unit price. Validates that the price is a positive number and that the ID is not already taken.
+
+### Option 3 — Create Order
+Prompts for a customer ID, product ID, and quantity. The order ID is generated automatically (`ORD-1`, `ORD-2`, ...). The total is calculated as `unit_price × quantity`. Validates that the customer and product both exist.
+
+### Option 4 — Show Orders
+Offers two sub-options:
+1. Display all registered orders
+2. Search for a specific order by its ID
+
+### Option 5 — Show Daily Income
+Sums the totals of all registered orders and displays the result.
+
+### Option 6 — Generate Report
+Produces a complete summary including total number of orders, total income, and all orders grouped by customer.
+
+---
+
+## Data Models
+
+### Customer
 ```python
-while True:
+customers_db[customer_id] = {
+    "name": str,
+    "email": str
+}
 ```
 
-- Keeps the program running continuously
-- Only stops when the user chooses to exit
-
----
-
-### 2. Menu call
-
+### Product
 ```python
-option = show_menu()
+products_db[product_id] = (product_id, product_name, unit_price)  # tuple
 ```
 
-- Call a function from `view.py`
-- Shows available options
-- Saves the option chosen by the user
-
----
-
-### 3. Conditional structure (`if/elif`)
-
+### Order
 ```python
-if option == "1": 
-# create client
-elif option == "2": 
-# create order
-```
-
-- Control what action to execute
-- Depending on the option: 
-- Calls `controller` functions 
-- Use `view` to request or display data
-
----
-
-### 4. Connection between layers
-
-Typical example:
-
-```python
-data = request_customer_data()
-create_customer(data)
-```
-
-👉 Here's what happens:
-- `view` → get data
-- `controller` → processes that data
-
----
-
-## 🧠 Summary of `main.py`
-
-- Control the flow of the program
-- Manage the menu
-- Decide which function to execute
-- Connect `view` and `controller`
-
----
-
-# 🖥️ `view.py` — Input and output
-
-## 🔹 What's inside?
-
-This file contains functions related to console interaction.
-
----
-
-### 1. Menu function
-
-```python
-def show_menu(): 
-print("1. Create client") 
-print("2. Create order") 
-return input("Select an option: ")
-```
-
-👉 Show options and return selection
-
----
-
-### 2. Functions to request data
-
-```python
-def request_customer_data(): 
-name = input("Name: ") 
-phone = input("Phone: ") 
-return {"name": name, "phone": phone}
-```
-
-👉 Returns data in structure (dictionary)
-
----
-
-### 3. Functions to display results
-
-```python
-def display_message(msg): 
-print(msg)
-```
-
-or
-
-```python
-def show_order(order): 
-print(request)
+orders_db[order_id] = {
+    "customer_id": str,
+    "product": (product_id, product_name, unit_price),
+    "quantity": int,
+    "total": float
+}
 ```
 
 ---
 
-## 🧠 Summary of `view.py`
+## Example Session
 
-- Use `input()` → to receive data
-- Use `print()` → to display data
-- Does not contain complex logic
-- Only communicates with the user
-
----
-
-# ⚙️ `controller.py` — System logic
-
-## 🔹 What's inside?
-
-Here is the actual logic of the program.
-
----
-
-### 1. Data structures
-
-```python
-clients = []
-orders = []
 ```
+====== MENU ======
+1. Register customer
+Select an option: 1
 
-👉 Lists are used to store information
+--- Register Customer ---
+Enter customer ID: C001
+Enter customer name: Alice Smith
+Enter customer email: alice@example.com
+✓ Customer 'Alice Smith' registered successfully
 
----
+Select an option: 2
 
-### 2. Function to create client
+--- Register Product ---
+Enter product ID: P001
+Enter product name: Laptop
+Enter unit price: 999.99
+✓ Product 'Laptop' registered successfully
 
-```python
-def create_client(data): 
-clients.append(data)
-```
+Select an option: 3
 
-👉 Save the client to the list
+--- Create Order ---
+Enter customer ID: C001
+Enter product ID: P001
+Enter quantity: 2
+✓ Order 'ORD-1' created. Total: $1999.98
 
----
+Select an option: 5
 
-### 3. Function to create order
-
-```python
-def create_order(data): 
-orders.append(data)
-```
-
-👉 Save orders
-
----
-
-### 4. Query functions
-
-```python
-def list_customers(): 
-return clients
-```
-
-👉 Return data to `main`
-
----
-
-### 5. Data processing
-
-May include:
-
-- Validations
-- Searches
-- Customer ↔ order relationship
-
----
-
-## 🧠 Summary of `controller.py`
-
-- Contains the system logic
-- Manage data
-- Execute actions
-- Does not interact directly with the user
-
----
-
-# 🔄 Complete system flow
-
-```text
-User → view (input) 
-→ main (decides) 
-→ controller (process) 
-→ main 
-→ view (print) 
-→ User
+--- DAILY INCOME ---
+Total generated: $1999.98
 ```
 
 ---
 
+## Limitations
 
-👉 This is a basic implementation of the MVC pattern in Python.
+- Data is **not persisted** between sessions — all records are lost when the program exits.
+- No multi-user support.
+- No file or database backend.
