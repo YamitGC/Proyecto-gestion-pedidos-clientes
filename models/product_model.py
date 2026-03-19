@@ -1,5 +1,3 @@
-# models/product_model.py
-
 def add_product(products_db, product_id, product_name, unit_price):
     """
     Adds a new product to the database as a tuple.

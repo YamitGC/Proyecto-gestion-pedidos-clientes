@@ -1,5 +1,3 @@
-# controller/order_controller.py
-
 from models import order_model, customer_model, product_model
 
 
