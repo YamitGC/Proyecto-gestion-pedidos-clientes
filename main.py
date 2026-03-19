@@ -1,3 +1,0 @@
-from controller.producto_controller import controlador_producto
-
-controlador_producto()
