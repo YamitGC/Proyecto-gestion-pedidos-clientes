@@ -1,5 +1,3 @@
-# controller/customer_controller.py
-
 from models import customer_model
 
 

@@ -1,5 +1,3 @@
-# controller/product_controller.py
-
 from models import product_model
 
 

@@ -1,7 +1,3 @@
-# main.py
-# Customer Order Management System
-# Entry point of the application
-
 from controller import customer_controller, product_controller, order_controller, report_controller
 from view import menu_view
 

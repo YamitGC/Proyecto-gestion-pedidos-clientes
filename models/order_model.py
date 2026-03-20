@@ -1,5 +1,3 @@
-# models/order_model.py
-
 def add_order(orders_db, order_id, customer_id, product_tuple, quantity, total):
     """
     Adds a new order to the database.

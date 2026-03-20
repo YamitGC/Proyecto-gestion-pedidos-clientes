@@ -1,5 +1,3 @@
-# models/customer_model.py
-
 def add_customer(customers_db, customer_id, name, email):
     """
     Adds a new customer to the database.
