@@ -25,6 +25,7 @@ def run():
         # OPTION 1 — Register customer
         # ------------------------------------------
         if option == "1":
+            menu_view.clean_screen()
             # View collects input
             customer_id, name, email = menu_view.get_customer_input()
 
@@ -40,6 +41,7 @@ def run():
         # OPTION 2 — Register product
         # ------------------------------------------
         elif option == "2":
+            menu_view.clean_screen()
             # View collects input
             product_id, product_name, unit_price = menu_view.get_product_input()
 
@@ -59,6 +61,7 @@ def run():
         # OPTION 3 — Create order
         # ------------------------------------------
         elif option == "3":
+            menu_view.clean_screen()
             # View collects input
             order_id, customer_id, product_id, quantity = menu_view.get_order_input()
 
@@ -86,6 +89,7 @@ def run():
         # OPTION 4 — Show orders
         # ------------------------------------------
         elif option == "4":
+            menu_view.clean_screen()
             # View asks how to search
             search_option = menu_view.show_search_order_menu()
 
@@ -118,6 +122,7 @@ def run():
         # OPTION 5 — Show daily income
         # ------------------------------------------
         elif option == "5":
+            menu_view.clean_screen()
             # Controller calculates total income
             total_income = report_controller.calculate_daily_income(orders_db)
 
@@ -128,6 +133,7 @@ def run():
         # OPTION 6 — Generate report
         # ------------------------------------------
         elif option == "6":
+            menu_view.clean_screen()
             # Controller builds the report
             report, message = report_controller.generate_report(
                 orders_db, customers_db
